@@ -92,7 +92,7 @@ class authControllers{
                     name,
                     email,
                     password: await bcrpty.hash(password, 10),
-                    method : 'menualy',
+                    method : 'manually',
                     shopInfo: {}
                 })
                await sellerCustomerModel.create({
