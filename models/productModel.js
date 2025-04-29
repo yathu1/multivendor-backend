@@ -48,7 +48,12 @@ const productSchema = new Schema({
     rating: {
         type: Number,
         default : 0
-    } 
+    } ,
+    condition: {
+        type: String,
+        enum: ['new', 'used'],
+        required: true
+    }
      
 }, {timestamps: true})
 
