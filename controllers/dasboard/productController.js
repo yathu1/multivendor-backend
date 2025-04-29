@@ -10,7 +10,9 @@ class productController{
         const form = formidable({ multiples: true })
 
         form.parse(req, async(err, field, files) => {
-            let {name, category,description, stock,price, discount,shopName,brand} = field;
+            let {name, category,description, stock,price, discount,shopName,brand,condition} = field;
+            console.log(field);
+            
             let {images} = files;
             name = name.trim()
             const slug = name.split(' ').join('-')
@@ -45,9 +47,10 @@ class productController{
                     price: parseInt(price),
                     discount: parseInt(discount),
                     images: allImageUrl,
-                    brand: brand.trim()  
+                    brand: brand.trim(),
+                    condition: condition.trim()  
                 })
-                responseReturn(res, 201,{ message : 'Product Added Successfully'})
+                responseReturn(res, 201,{ message : 'Book Added Successfully'})
                 
             } catch (error) {
                 responseReturn(res, 500,{ error : error.message})
@@ -112,7 +115,7 @@ class productController{
                 name, description, stock,price,category, discount,brand,productId, slug
             })
             const product = await productModel.findById(productId)
-            responseReturn(res, 200,{product, message : 'Product Updated Successfully'})
+            responseReturn(res, 200,{product, message : 'Book Updated Successfully'})
         } catch (error) {
             responseReturn(res, 500,{ error : error.message })
         }
@@ -150,7 +153,7 @@ class productController{
                     await productModel.findByIdAndUpdate(productId,{images}) 
 
                     const product = await productModel.findById(productId)
-                    responseReturn(res, 200,{product, message : 'Product Image Updated Successfully'})
+                    responseReturn(res, 200,{product, message : 'Book Image Updated Successfully'})
 
                 } else {
                     responseReturn(res, 404,{ error : 'Image Upload Failed'})
