@@ -195,17 +195,17 @@ class authControllers{
     }
 // End Method 
 
- logout = async (req, res) => {
+logout = async (_, res) => {
     try {
-        res.cookie('accessToken',null,{
-            expires : new Date(Date.now()),
+        res.cookie('accessToken', null, {
+            expires: new Date(Date.now()),
             httpOnly: true
-        })
-        responseReturn(res, 200,{ message : 'logout Success' })
+        });
+        responseReturn(res, 200, { message: 'Logout Success' });
     } catch (error) {
-        responseReturn(res, 500,{ error : error.message })
+        responseReturn(res, 500, { error: error.message });
     }
- }
+};
 // End Method 
 
 //change password

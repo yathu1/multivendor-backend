@@ -42,8 +42,6 @@ class categoryController{
                } catch (error) {
                 responseReturn(res, 500,{ error : 'Internal Server Error'})
                }
- 
-
 
             }
              
